@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser')
 
 
 const cors = require("cors")
-// const allowedOrigin = "https://ticketing-system-application-9qo3.vercel.app/"
+// const allowedOrigin = "https://localhost:5173/"
 
 
 app.use(cors())

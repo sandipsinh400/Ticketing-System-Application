@@ -57,12 +57,17 @@ exports.login = async (req, res) => {
 
       const token = jwt.sign(payload,process.env.Secret_Key,{ expiresIn: '1h' })
      
-      res.cookie('admin', token, { httpOnly: true, maxage: 60 * 60 * 1000 }).json({
-        success:true,
-       message:'login successfully ',
-       admin
-       
-      })
+      res.cookie('admin', token, { 
+        httpOnly: true, 
+        secure: true, 
+        sameSite: 'None', 
+        maxAge: 60 * 60 * 1000 
+    }).json({
+        success: true,
+        message: 'Login successfully',
+        admin
+    });
+    
 
     }
   } else {
