@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -15,7 +15,7 @@ const Signupauth = () => {
   async function signup(data) {
   
     try {
-      const res = await axios.post('https://ticketing-system-application.onrender.com/api/admin/signup', data, { withCredentials: true })
+      const res = await axios.post('https://ticketing-system-application.onrender.com/api/admin/signup', data)
       if(res.data.success){
         toast.success(res.data.message)
         redirect("/login")
@@ -61,7 +61,7 @@ const Signupauth = () => {
             </button>
           </div>
         </div>
-        <span class="agreement"><a href="/login">All Ready Register</a></span>
+        <span class="agreement"><NavLink to="/login">All Ready Register</NavLink></span>
       </div>
     </>
   )

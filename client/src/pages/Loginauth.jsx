@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { StoreUser } from '../redux/AuthSlice';
@@ -15,7 +15,7 @@ const Loginauth = () => {
 
   async function login(data) {
    try {
-   const res= await axios.post('https://ticketing-system-application.onrender.com/api/admin/login',data,{withCredentials:true})
+   const res= await axios.post('https://ticketing-system-application.onrender.com/api/admin/login',data)
    if(res.data.success){
     toast.success(res.data.message)
     dispatch(StoreUser(res.data.admin))
@@ -67,7 +67,7 @@ const Loginauth = () => {
           </button>
         </div>
       </div>
-      <span class="agreement"><a href="/signup">Not a Register</a></span>
+      <span class="agreement"><NavLink to="/signup">Not a Register</NavLink></span>
 
   </div>
 
