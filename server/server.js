@@ -9,12 +9,12 @@ const cookieParser = require('cookie-parser')
 
 
 const cors = require("cors")
-const allowedOrigin = "https://ticketing-system-application-9qo3.vercel.app/"
+// const allowedOrigin = "https://ticketing-system-application-9qo3.vercel.app/"
 
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cors({ origin: allowedOrigin, credentials: true }))
 app.use(cookieParser())
 
 app.get('/', (req, res) => res.send('Hello World!'))
