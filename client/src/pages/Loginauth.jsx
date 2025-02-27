@@ -15,7 +15,7 @@ const Loginauth = () => {
 
   async function login(data) {
    try {
-   const res= await axios.post('https://ticketing-system-application.onrender.com/api/admin/login',data, )
+   const res= await axios.post('https://ticketing-system-application.onrender.com/api/admin/login',data)
    if(res.data.success){
     toast.success(res.data.message)
     dispatch(StoreUser(res.data.admin))
