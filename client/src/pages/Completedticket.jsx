@@ -11,7 +11,7 @@ const Completedticket = () => {
     const navigate = useNavigate()
 
     async function show() {
-        const res = await axios.get("http://localhost:3000/api/ticket")
+        const res = await axios.get("https://ticketing-system-application.onrender.com/api/ticket")
         console.log(res.data.ticket);
         setTicket(res.data.ticket)
     }
@@ -23,20 +23,7 @@ const Completedticket = () => {
     }, [])
 
 
-    // const handleActionChange = async (ticketId, actions) => {
-    //     try {
-    //         await axios.put(`http://localhost:3000/api/ticket/${ticketId}`, { actions },);
-
-    //         setTicket(prevTickets =>
-    //             prevTickets.map(ticket =>
-    //                 ticket._id === ticketId ? { ...ticket, actions: actions } : ticket
-    //             )
-    //         );
-    //         show();
-    //     } catch (error) {
-    //         console.error("Error updating ticket status", error);
-    //     }
-    // };
+    
 
 
   
@@ -149,7 +136,7 @@ const Completedticket = () => {
                     Go back
                 </button>
                 <span>1</span>
-                <button class="btn btn-outline-secondary">Next</button>
+
             </div>
         </div>
 

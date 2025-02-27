@@ -11,7 +11,7 @@ const Singleuser = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/ticket/${id}`)
+    axios.get(`https://ticketing-system-application.onrender.com/api/ticket/${id}`)
       .then(response => {
         console.log(response.data);
         setUser(response.data);

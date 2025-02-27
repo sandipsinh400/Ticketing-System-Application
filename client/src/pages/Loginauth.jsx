@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { StoreUser } from '../redux/AuthSlice';
 
 
@@ -11,14 +11,20 @@ const Loginauth = () => {
   const {register,handleSubmit}= useForm()
   const redirect= useNavigate()
   const dispatch = useDispatch();
+  const q_role_id=useSelector((store)=>store.auth.admin)
 
   async function login(data) {
    try {
-   const res= await axios.post('http://localhost:3000/api/admin/login',data,{withCredentials:true})
+   const res= await axios.post('https://ticketing-system-application.onrender.com/api/admin/login',data,{withCredentials:true})
    if(res.data.success){
     toast.success(res.data.message)
     dispatch(StoreUser(res.data.admin))
-    redirect("/")
+    if(res.data.admin.q_role_id === "admin"){
+      redirect("/View")
+    }else{
+      redirect("/")
+    }
+    
    }
    else{
     toast.error(res.data.message)

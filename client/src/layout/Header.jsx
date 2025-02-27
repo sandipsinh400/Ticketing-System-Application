@@ -19,7 +19,7 @@ const Header = () => {
 
     const handleLogout = async () => {
         try {
-         const res = await axios.post("http://localhost:3000/api/admin/logout", {}, { withCredentials: true });
+         const res = await axios.post("https://ticketing-system-application.onrender.com/api/admin/logout", {}, { withCredentials: true });
           localStorage.removeItem("token"); 
           if(res.data.success){
             toast.success(res.data.message)

@@ -15,7 +15,7 @@ const Signupauth = () => {
   async function signup(data) {
   
     try {
-      const res = await axios.post('http://localhost:3000/api/admin/signup', data, { withCredentials: true })
+      const res = await axios.post('https://ticketing-system-application.onrender.com/api/admin/signup', data, { withCredentials: true })
       if(res.data.success){
         toast.success(res.data.message)
         redirect("/login")

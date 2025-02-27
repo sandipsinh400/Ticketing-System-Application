@@ -4,6 +4,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
+import toast, { Toaster } from 'react-hot-toast';
 
 const ViewTicket = () => {
     const [Ticktelist, setTicket] = useState([])
@@ -13,7 +14,7 @@ const ViewTicket = () => {
     const navigate = useNavigate()
 
     async function show() {
-        const res = await axios.get("http://localhost:3000/api/ticket")
+        const res = await axios.get("https://ticketing-system-application.onrender.com/api/ticket")
         console.log(res.data.ticket);
         setTicket(res.data.ticket)
     }
@@ -26,7 +27,13 @@ const ViewTicket = () => {
 
     const handleActionChange = async (ticketId, actions) => {
         try {
-            await axios.put(`http://localhost:3000/api/ticket/${ticketId}`, { actions },);
+            const res=await axios.put(`https://ticketing-system-application.onrender.com/api/ticket/${ticketId}`, { actions },);
+            if(res.data.success){
+                toast.success(res.data.message)
+                navigate("/View")
+               }else{
+                toast.error(res.data.message)
+               }
 
             setTicket(prevTickets =>
                 prevTickets.map(ticket =>
@@ -35,7 +42,7 @@ const ViewTicket = () => {
             );
             show();
         } catch (error) {
-            console.error("Error updating ticket status", error);
+            toast.error(error)
         }
     };
 
@@ -208,7 +215,6 @@ const ViewTicket = () => {
                     Go back
                 </button>
                
-                <button class="btn btn-outline-secondary">Next</button>
             </div>
         </div>
 

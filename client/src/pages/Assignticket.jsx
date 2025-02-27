@@ -10,7 +10,7 @@ const Assignticket = () => {
     const navigate = useNavigate()
 
     async function show() {
-        const res = await axios.get("http://localhost:3000/api/ticket")
+        const res = await axios.get("https://ticketing-system-application.onrender.com/api/ticket")
         console.log(res.data.ticket);
         setTicket(res.data.ticket)
     }
@@ -127,8 +127,7 @@ const Assignticket = () => {
                 <button type="button" onClick={() => navigate(-1)} className="btn btn-outline-secondary px-4">
                     Go back
                 </button>
-                <span>1</span>
-                <button class="btn btn-outline-secondary">Next</button>
+         
             </div>
         </div>
 

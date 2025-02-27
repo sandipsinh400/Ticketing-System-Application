@@ -20,7 +20,7 @@ function CreateTicket() {
     formData.append("File", data.File[0]);
 
   try {
-      const res = await axios.post("http://localhost:3000/api/ticket", formData)
+      const res = await axios.post("https://ticketing-system-application.onrender.com/api/ticket", formData)
       if(res.data.success){
         toast.success(res.data.message)
         redirect("/")
